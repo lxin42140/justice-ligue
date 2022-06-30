@@ -1,4 +1,4 @@
-<div class="container">
+<div class="body-container container">
 
   <h1>Help us match you to the <span class="blue-text">right Lawyer</span></h1>
   <mat-card>
@@ -24,10 +24,19 @@
         [buttonText]="subjectMatterExample.exampleName"></app-option>
     </div>
 
+    <div class="page" *ngIf="currentPage === 3">
+      <h2>What kind of help do you need?</h2>
+      <app-option *ngFor="let legalServiceCategory of lawSubjectService.legalServiceCategories"
+        (click)="setSelectedLegalServiceCategory(legalServiceCategory)"
+        [active]='selectedLegalServiceCategory === legalServiceCategory' [buttonText]="legalServiceCategory">
+      </app-option>
+    </div>
+
     <div class="row">
-      <button *ngIf="currentPage !== 1" mat-raised-button disabled="false" class="button"
-        (click)="previous()">Previous</button>
-      <button mat-raised-button disabled="false" class="button" (click)="next()">Next</button>
+      <button *ngIf="currentPage !== 1" mat-raised-button class="button" (click)="previous()">Previous</button>
+      <button *ngIf="currentPage !== totalPages" mat-raised-button class="button" (click)="next()">Next</button>
+      <button *ngIf="currentPage === totalPages" mat-raised-button color="primary" class="button"
+        (click)="submit()">Proceed</button>
     </div>
   </mat-card>
 </div>

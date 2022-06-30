@@ -9,6 +9,7 @@ import { LawSubjectMatter } from '../models/lawSubjectMatter';
 export class LawSubjectService {
 
   lawSubjects: LawSubjectMatter[] = [];
+  legalServiceCategories: string[] = []; //change when model has been created
 
   constructor() {
     this.lawSubjects = [{
@@ -97,5 +98,7 @@ export class LawSubjectService {
         },
       ]
     }]
+
+    this.legalServiceCategories = ['Consultation', 'Mediation', 'Arbitration', 'Preparation', 'Representation']
   }
 }

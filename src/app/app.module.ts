@@ -16,6 +16,8 @@ import { HomeComponent } from './user-client/home/home.component';
 import { OptionComponent } from './components/option/option.component';
 import { ViewConsultationsComponent } from './user-client/view-consultations/view-consultations.component';
 import { MatchingLawyerComponent } from './user-client/matching-lawyer/matching-lawyer.component';
+import { AllLawyersComponent } from './user-client/all-lawyers/all-lawyers.component';
+import { LawyerCardComponent } from './components/cards/lawyer-card/lawyer-card.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { MatchingLawyerComponent } from './user-client/matching-lawyer/matching-
     HomeComponent,
     OptionComponent,
     ViewConsultationsComponent,
-    MatchingLawyerComponent
+    MatchingLawyerComponent,
+    AllLawyersComponent,
+    LawyerCardComponent
   ],
   imports: [
     BrowserModule,

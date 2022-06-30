@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// mat-card {
+//   width: 70%;
+//   margin: 5% 15%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+.card {
+  width: 70%;
+  margin: 5% 15%;
+  display: flex;
+  flex-direction: row;
+  // align-items: flex-start;
+  justify-content: center;
+}
+
+.lawyer-cards {
+  display: flex;
+  justify-content: flex-start;
+  // margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.lawyer-card {
+  width: 40%;
+  margin: 10px;
+  // margin: 0;
+}

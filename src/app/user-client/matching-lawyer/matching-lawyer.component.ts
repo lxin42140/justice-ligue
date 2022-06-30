@@ -17,6 +17,7 @@ export class MatchingLawyerComponent implements OnInit {
 
   selectedLawSubjectMatter: LawSubjectMatter | undefined;
   selectedLawSubjectMatterExample: LawSubjectMatterExample | undefined;
+  selectedLegalServiceCategory: string | undefined;
 
   constructor(
     private router: Router,
@@ -32,6 +33,10 @@ export class MatchingLawyerComponent implements OnInit {
 
   setSelectedLawSubjectMatterExample(subjectMatterExample: LawSubjectMatterExample) {
     this.selectedLawSubjectMatterExample = subjectMatterExample
+  }
+
+  setSelectedLegalServiceCategory(category: string) {
+    this.selectedLegalServiceCategory = category;
   }
 
   selectOption(option: number) {
@@ -53,17 +58,9 @@ export class MatchingLawyerComponent implements OnInit {
     this.currentPage--;
   }
 
-  navigate() {
-    switch (this.selectedOption) {
-      case (0):
-        this.router.navigate(['client/matching'])
-        break;
-      case (1):
-        this.router.navigate(['client/view-consultations']);
-        break;
-      default:
-        break;
+  submit() {
+    if (this.selectedLegalServiceCategory) {
+      this.router.navigate(['/client/all-lawyers', this.selectedLawSubjectMatter?.subjectName, this.selectedLawSubjectMatterExample?.exampleName, this.selectedLegalServiceCategory]);
     }
   }
-
 }
