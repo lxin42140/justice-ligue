@@ -1,3 +1,4 @@
+import { AccountService } from './../../services/account.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
+    public accountService: AccountService
   ) { }
 
   ngOnInit(): void {
@@ -21,16 +23,33 @@ export class HomeComponent implements OnInit {
     this.selectedOption = option;
   }
 
+  resetOption() {
+    this.selectedOption = -1;
+  }
+
   navigate() {
-    switch (this.selectedOption) {
-      case (0):
-        this.router.navigate(['client/matching'])
-        break;
-      case (1):
-        this.router.navigate(['client/view-consultations']);
-        break;
-      default:
-        break;
+    if (this.accountService.isClient) {
+      switch (this.selectedOption) {
+        case (0):
+          this.router.navigate(['client/matching'])
+          break;
+        case (1):
+          this.router.navigate(['client/view-consultations']);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (this.selectedOption) {
+        case (0):
+          this.router.navigate([''])
+          break;
+        case (1):
+          this.router.navigate(['lawyer/view-appointments']);
+          break;
+        default:
+          break;
+      }
     }
   }
 

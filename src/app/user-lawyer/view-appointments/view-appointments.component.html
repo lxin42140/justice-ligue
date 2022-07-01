@@ -1,1 +1,80 @@
-<p>view-appointments works!</p>
+<div class="container">
+  <div class="booking-container">
+    <h1>Booked Appointments</h1>
+    <br/>
+    <div class="row all-timeslots">
+      <div
+        *ngFor="let dayTimeslots of timeslots | keyvalue"
+        class="day-timeslots"
+      >
+        <div class="row">
+          <div
+            [ngClass]="{
+              indicator: true,
+              active:
+                selectedTimeslot &&
+                selectedTimeslot.day.date === dayTimeslots.key,
+              inactive:
+                !selectedTimeslot ||
+                selectedTimeslot.day.date !== dayTimeslots.key
+            }"
+          ></div>
+          <div>
+            <div [ngSwitch]="dayTimeslots.value[0].day.dayOfWeek">
+              <span *ngSwitchCase="0">SUN</span>
+              <span *ngSwitchCase="1">MON</span>
+              <span *ngSwitchCase="2">TUE</span>
+              <span *ngSwitchCase="3">WED</span>
+              <span *ngSwitchCase="4">THU</span>
+              <span *ngSwitchCase="5">FRI</span>
+              <span *ngSwitchCase="6">SAT</span>
+            </div>
+            <h1 style="margin: 0">{{ dayTimeslots.key }}</h1>
+          </div>
+        </div>
+
+        <div *ngFor="let timeslot of dayTimeslots.value">
+          <div
+            [ngClass]="{ card: true, active: checkTimeslotIsActive(timeslot) }"
+            (click)="selectTimeslot(dayTimeslots.key, timeslot.time.startTime)"
+          >
+            <p
+              [ngClass]="{
+                'card-content-active': checkTimeslotIsActive(timeslot)
+              }"
+            >
+              {{ timeslot.time.startTime }} - {{ timeslot.time.endTime }}
+            </p>
+            <div
+              [ngClass]="{
+                row: true,
+                'card-content-active': checkTimeslotIsActive(timeslot)
+              }"
+              style="align-items: center"
+            >
+              <mat-icon
+                [ngClass]="{
+                  'card-content-active': checkTimeslotIsActive(timeslot)
+                }"
+                style="margin-right: 5px"
+                >access_time</mat-icon
+              >
+              <span
+                [ngClass]="{
+                  'card-content-active': checkTimeslotIsActive(timeslot)
+                }"
+                class="card-content"
+                >{{ timeslot.time.duration }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row button-container">
+      <button *ngIf="viewProfile" mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
+      <button *ngIf="!viewProfile" mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined" (click)="updateCase()">Book slot</button>
+    </div> -->
+</div>
