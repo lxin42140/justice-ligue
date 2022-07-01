@@ -1,0 +1,85 @@
+
+.container {
+  height: 100%;
+}
+
+.profile-container {
+  height: 90%;
+}
+
+.booking-container {
+  padding: 16px;
+  height: calc(90% - 32px);
+  overflow: scroll;
+}
+
+.image {
+  width: 100%;
+  height: 35%;
+}
+
+.information {
+  margin-top: 10px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: -60px 20px 0 20px;
+  border: 3px solid rgb(0, 117, 230);
+}
+
+.button-container {
+  height: 10%;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 20px;
+  // position: absolute;
+  // bottom: 20px;
+  // right: 20px;
+}
+
+.all-timeslots {
+  // flex-shrink: 0;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.day-timeslots {
+  display: flex;
+  flex-direction: column;
+  width: 17.5%;
+  min-width: 17.5%;
+}
+
+.indicator {
+  height: 100%;
+  width: 3px;
+  margin-right: 10px;
+}
+
+.active {
+  background-color: rgb(0, 117, 230);
+  border-width: 0px;
+}
+
+.inactive {
+  background-color: #D9D9D9;
+}
+
+.card {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 8px;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card-content-active {
+  color: white;
+}
