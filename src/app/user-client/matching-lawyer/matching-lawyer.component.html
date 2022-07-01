@@ -5,23 +5,22 @@
     <div class="row progress-bar">
       <div *ngFor="let _ of [].constructor(totalPages); let i = index"
         [ngClass]="{'progress-step': true, 'active' : currentPage > i, 'inactive' : i >= currentPage}">
-        <!-- <p>testing</p> -->
       </div>
     </div>
     <div class="page" *ngIf="currentPage === 1">
       <h2>What type of legal service are you looking for?</h2>
-      <app-option *ngFor="let subjectMatter of lawSubjectService.lawSubjects"
-        (click)="setSelectedLawSubjectMatter(subjectMatter)"
-        [active]='selectedLawSubjectMatter?.subjectName === subjectMatter.subjectName'
-        [buttonText]="subjectMatter.subjectName"></app-option>
+      <app-option *ngFor="let lawArea of lawSubjectService.lawSubjects"
+        (click)="setSelectedLawSubjectMatter(lawArea)"
+        [active]='selectedLawArea?.areaName === lawArea.areaName'
+        [buttonText]="lawArea.areaName"></app-option>
     </div>
 
     <div class="page" *ngIf="currentPage === 2">
       <h2>Which category does your case fall under?</h2>
-      <app-option *ngFor="let subjectMatterExample of selectedLawSubjectMatter?.lawSubjectMatterExamples"
-        (click)="setSelectedLawSubjectMatterExample(subjectMatterExample)"
-        [active]='selectedLawSubjectMatterExample?.exampleName === subjectMatterExample.exampleName'
-        [buttonText]="subjectMatterExample.exampleName"></app-option>
+      <app-option *ngFor="let legalIssue of selectedLawArea?.associatedLegalIssues"
+        (click)="setSelectedLawSubjectMatterExample(legalIssue)"
+        [active]='selectedLegalIssue?.issueName === legalIssue.issueName'
+        [buttonText]="legalIssue.issueName"></app-option>
     </div>
 
     <div class="page" *ngIf="currentPage === 3">

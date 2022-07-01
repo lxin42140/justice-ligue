@@ -1,4 +1,4 @@
-export enum LawSubjectMatterExampleEnum {
+export enum LegalIssueEnum {
   //Civil
   SMALL_CLAIMS = 'Small Claims',
   EMPLOYMENT_CLAIMS = 'Employment Claims',

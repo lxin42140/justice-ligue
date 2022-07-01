@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LawSubjectService } from '../../services/law-subject.service';
-import { LawSubjectMatter } from '../../models/lawSubjectMatter';
-import { LawSubjectMatterExample } from 'src/app/models/lawSubjectMatterExample';
+
+import { LawArea } from 'src/app/models/LawArea';
+import { LegalIssue } from 'src/app/models/LegalIssue';
 
 @Component({
   selector: 'app-matching-lawyer',
@@ -15,8 +16,8 @@ export class MatchingLawyerComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number = 3;
 
-  selectedLawSubjectMatter: LawSubjectMatter | undefined;
-  selectedLawSubjectMatterExample: LawSubjectMatterExample | undefined;
+  selectedLawArea: LawArea | undefined;
+  selectedLegalIssue: LegalIssue | undefined;
   selectedLegalServiceCategory: string | undefined;
 
   constructor(
@@ -27,12 +28,12 @@ export class MatchingLawyerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setSelectedLawSubjectMatter(subjectMatter: LawSubjectMatter) {
-    this.selectedLawSubjectMatter = subjectMatter
+  setSelectedLawSubjectMatter(lawArea: LawArea) {
+    this.selectedLawArea = lawArea
   }
 
-  setSelectedLawSubjectMatterExample(subjectMatterExample: LawSubjectMatterExample) {
-    this.selectedLawSubjectMatterExample = subjectMatterExample
+  setSelectedLawSubjectMatterExample(legalIssue: LegalIssue) {
+    this.selectedLegalIssue = legalIssue
   }
 
   setSelectedLegalServiceCategory(category: string) {
@@ -44,12 +45,12 @@ export class MatchingLawyerComponent implements OnInit {
   }
 
   next() {
-    if ((this.currentPage === 1 && this.selectedLawSubjectMatter)) {
-      if (this.selectedLawSubjectMatterExample && !this.selectedLawSubjectMatter.lawSubjectMatterExamples.some(x => x.exampleName === this.selectedLawSubjectMatterExample?.exampleName)) {
-        this.selectedLawSubjectMatterExample = undefined;
+    if ((this.currentPage === 1 && this.selectedLawArea)) {
+      if (this.selectedLegalIssue && !this.selectedLawArea.associatedLegalIssues.some(x => x.issueName === this.selectedLegalIssue?.issueName)) {
+        this.selectedLegalIssue = undefined;
       }
       this.currentPage++;
-    } else if (this.currentPage === 2 && this.selectedLawSubjectMatterExample) {
+    } else if (this.currentPage === 2 && this.selectedLegalIssue) {
       this.currentPage++;
     }
   }
@@ -60,7 +61,7 @@ export class MatchingLawyerComponent implements OnInit {
 
   submit() {
     if (this.selectedLegalServiceCategory) {
-      this.router.navigate(['/client/all-lawyers', this.selectedLawSubjectMatter?.subjectName, this.selectedLawSubjectMatterExample?.exampleName, this.selectedLegalServiceCategory]);
+      this.router.navigate(['/client/all-lawyers', this.selectedLawArea?.areaName, this.selectedLegalIssue?.issueName, this.selectedLegalServiceCategory]);
     }
   }
 }

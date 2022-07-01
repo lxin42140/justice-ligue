@@ -1,100 +1,185 @@
 import { Injectable } from '@angular/core';
-import { LawSubjectMatterEnum } from '../models/enums/law-subject-matter.enum';
-import { LawSubjectMatterExampleEnum } from '../models/enums/law-subject-matter-example.enum';
-import { LawSubjectMatter } from '../models/lawSubjectMatter';
+import { LawAreaEnum } from '../models/enums/law-area.enum';
+import { LegalIssueEnum } from '../models/enums/legal-issue.enum';
+import { LawArea } from '../models/LawArea';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LawSubjectService {
 
-  lawSubjects: LawSubjectMatter[] = [];
+  lawSubjects: LawArea[] = [];
   legalServiceCategories: string[] = []; //change when model has been created
 
   constructor() {
     this.lawSubjects = [{
-      subjectName: LawSubjectMatterEnum.CIVIL,
-      subjectDescription: '',
-      lawSubjectMatterExamples: [
+      areaName: LawAreaEnum.CIVIL,
+      areaDescription: '',
+      associatedLegalIssues: [
         {
-          exampleName: LawSubjectMatterExampleEnum.SMALL_CLAIMS,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.SMALL_CLAIMS,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CIVIL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.EMPLOYMENT_CLAIMS,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.EMPLOYMENT_CLAIMS,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CIVIL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.NEIGHBOUR_DISPUTES,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.NEIGHBOUR_DISPUTES,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CIVIL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.BANKRUPTCY,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.BANKRUPTCY,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CIVIL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.BREACH_OF_CONTRACT,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.BREACH_OF_CONTRACT,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CIVIL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.COMMERCIAL,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.COMMERCIAL,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CIVIL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
       ]
     },
     {
-      subjectName: LawSubjectMatterEnum.CRIMINAL,
-      subjectDescription: '',
-      lawSubjectMatterExamples: [
+      areaName: LawAreaEnum.CRIMINAL,
+      areaDescription: '',
+      associatedLegalIssues: [
         {
-          exampleName: LawSubjectMatterExampleEnum.HOMICIDE,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.HOMICIDE,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.DRUG_OFFENCES,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.DRUG_OFFENCES,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.SEXUAL_OFFENCES,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.SEXUAL_OFFENCES,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.CHEATING,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.CHEATING,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.TRAFFIC_OR_REGULATORY,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.TRAFFIC_OR_REGULATORY,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         }
       ]
     },
     {
-      subjectName: LawSubjectMatterEnum.FAMILY,
-      subjectDescription: '',
-      lawSubjectMatterExamples: [
+      areaName: LawAreaEnum.FAMILY,
+      areaDescription: '',
+      associatedLegalIssues: [
         {
-          exampleName: LawSubjectMatterExampleEnum.DIVORCE,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.DIVORCE,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.FAMILY,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.FAMILY_VIOLENCE,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.FAMILY_VIOLENCE,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.FAMILY,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.PROBATE_AND_ADMIN,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.PROBATE_AND_ADMIN,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.FAMILY,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.MAINTENANCE,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.MAINTENANCE,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.FAMILY,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.ADOPTION,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.ADOPTION,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.FAMILY,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
         {
-          exampleName: LawSubjectMatterExampleEnum.CHILD_PROTECTION,
-          exampleDescription: ''
+          issueName: LegalIssueEnum.CHILD_PROTECTION,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.FAMILY,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         },
       ]
     }]
