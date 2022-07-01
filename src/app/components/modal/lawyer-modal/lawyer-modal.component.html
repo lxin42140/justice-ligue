@@ -1,6 +1,16 @@
 <div class="container">
 
-  <div *ngIf="viewProfile" class="profile-container">
+  <div *ngIf="showEditFormPage" class="booking-container">
+    <h1>Fill in the required fields.</h1>
+    <h3>The lawyers can review these information beforehand, thus saving time during the meeting.</h3>
+
+    <mat-form-field *ngFor="let field of requiredFields | keyvalue; trackBy:trackByFn" appearance="fill">
+      <mat-label>{{field.key}}</mat-label>
+      <textarea matInput [ngModel]="field.value" (ngModelChange)="updateFields(field.key, $event)"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="!showEditFormPage && viewProfile" class="profile-container">
     <img src="../../../../assets/images/cover.jpg" class="image" />
     <div>
       <div class="row information">
@@ -13,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!viewProfile" class="booking-container">
+  <div *ngIf="!showEditFormPage && !viewProfile" class="booking-container">
     <h1>Book a slot</h1>
     <h3>Select available date and time for the consultation</h3>
     <div class="row all-timeslots">
@@ -37,13 +47,16 @@
         </div>
 
         <div *ngFor="let timeslot of dayTimeslots.value">
-          <div
-            [ngClass]="{'card': true, 'active': checkTimeslotIsActive(timeslot)}"
+          <div [ngClass]="{'card': true, 'active': checkTimeslotIsActive(timeslot)}"
             (click)="selectTimeslot(dayTimeslots.key, timeslot.time.startTime)">
-            <p [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}">{{timeslot.time.startTime}} - {{timeslot.time.endTime}}</p>
-            <div [ngClass]="{'row': true, 'card-content-active': checkTimeslotIsActive(timeslot)}" style="align-items: center;">
-              <mat-icon [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}" style="margin-right: 5px;">access_time</mat-icon>
-              <span [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}" class="card-content">{{timeslot.time.duration}}</span>
+            <p [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}">{{timeslot.time.startTime}} -
+              {{timeslot.time.endTime}}</p>
+            <div [ngClass]="{'row': true, 'card-content-active': checkTimeslotIsActive(timeslot)}"
+              style="align-items: center;">
+              <mat-icon [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}" style="margin-right: 5px;">
+                access_time</mat-icon>
+              <span [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}"
+                class="card-content">{{timeslot.time.duration}}</span>
             </div>
           </div>
         </div>
@@ -51,9 +64,21 @@
     </div>
   </div>
 
-  <div class="row button-container">
-    <button *ngIf="viewProfile" mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
-    <button *ngIf="!viewProfile" mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined" (click)="updateCase()">Book slot</button>
+  <div *ngIf="showEditFormPage" class="row button-container">
+    <!-- <button *ngIf="viewProfile" mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
+    <button *ngIf="!viewProfile" mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined"
+      (click)="updateCase()">Book slot</button> -->
+  </div>
+
+  <div *ngIf="!showEditFormPage && !viewProfile" class="row button-container">
+    <button mat-raised-button (click)="closeModal()">Back</button>
+    <button mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined" (click)="updateCase()">
+      Book slot</button>
+  </div>
+
+  <div *ngIf="!showEditFormPage && viewProfile" class="row button-container">
+    <button mat-raised-button (click)="closeModal()">Back</button>
+    <button mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
   </div>
 
 </div>

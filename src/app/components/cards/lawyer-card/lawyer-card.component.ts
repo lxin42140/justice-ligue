@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Lawyer } from 'src/app/models/Lawyer';
 import { LawyerDialogData, LawyerModalComponent } from '../../modal/lawyer-modal/lawyer-modal.component';
 
 @Component({
@@ -8,6 +9,8 @@ import { LawyerDialogData, LawyerModalComponent } from '../../modal/lawyer-modal
   styleUrls: ['./lawyer-card.component.scss']
 })
 export class LawyerCardComponent implements OnInit {
+
+  @Input() lawyer: Lawyer | undefined;
 
   constructor(public dialog: MatDialog) { }
 
@@ -18,7 +21,8 @@ export class LawyerCardComponent implements OnInit {
     const dialogRef = this.dialog.open(LawyerModalComponent, {
       width: '80%',
       height: '80%',
-      data: <LawyerDialogData>{ viewProfile: viewProfile },
+      disableClose: true,
+      data: <LawyerDialogData>{ viewProfile: viewProfile, lawyer: this.lawyer },
     });
 
     // dialogRef.afterClosed().subscribe(result => {

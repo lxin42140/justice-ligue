@@ -30,8 +30,12 @@ interface Timeslot {
 export class LawyerModalComponent implements OnInit {
 
   viewProfile: boolean = true;
+
   timeslots: Map<number, Timeslot[]> = new Map<number, Timeslot[]>();
   selectedTimeslot: Timeslot | undefined;
+
+  showEditFormPage: boolean = false;
+  requiredFields: Map<string, string> = new Map();
 
   constructor(
     public dialogRef: MatDialogRef<LawyerModalComponent>,
@@ -40,7 +44,7 @@ export class LawyerModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewProfile = this.data.viewProfile
-
+    this.requiredFields = this.data.lawyer.caseTemplates[0].requiredFields; //for now, take it as there is only one case template
     this.initTimeslots();
   }
 
@@ -58,6 +62,23 @@ export class LawyerModalComponent implements OnInit {
 
   updateCase() {
     //TODO: update the case with the timeslot
+    this.showEditFormPage = true;
+  }
+
+  //this function is just to prevent the textarea from losing focus on every character input.
+  //read here: https://stackoverflow.com/questions/42322968/angular2-dynamic-input-field-lose-focus-when-input-changes
+  trackByFn(index: any, item: any) {
+    return index;
+  }
+
+  updateFields(field: string, event: string) {
+    console.log('field', field)
+    console.log('event', event)
+    this.requiredFields.set(field, event);
+  }
+
+  closeModal() {
+    this.dialogRef.close();
   }
 
   private initTimeslots() {
@@ -94,8 +115,4 @@ export class LawyerModalComponent implements OnInit {
       }
     }
   }
-
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
 }
