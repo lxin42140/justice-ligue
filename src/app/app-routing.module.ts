@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './user-client/home/home.component';
+import { HomeComponent } from './shared/home/home.component';
 import { MatchingLawyerComponent } from './user-client/matching-lawyer/matching-lawyer.component';
 import { AllLawyersComponent } from './user-client/all-lawyers/all-lawyers.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'client/home',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
-    path: 'client/home',
+    path: 'home',
     component: HomeComponent
   },
   {

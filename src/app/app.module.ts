@@ -18,13 +18,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 
-import { HomeComponent } from './user-client/home/home.component';
+// import { HomeComponent } from './user-client/home/home.component';
+import { HomeComponent } from './shared/home/home.component';
 import { OptionComponent } from './components/option/option.component';
 import { ViewConsultationsComponent } from './user-client/view-consultations/view-consultations.component';
 import { MatchingLawyerComponent } from './user-client/matching-lawyer/matching-lawyer.component';
 import { AllLawyersComponent } from './user-client/all-lawyers/all-lawyers.component';
 import { LawyerCardComponent } from './components/cards/lawyer-card/lawyer-card.component';
 import { LawyerModalComponent } from './components/modal/lawyer-modal/lawyer-modal.component';
+import { ViewAppointmentsComponent } from './user-lawyer/view-appointments/view-appointments.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import { LawyerModalComponent } from './components/modal/lawyer-modal/lawyer-mod
     MatchingLawyerComponent,
     AllLawyersComponent,
     LawyerCardComponent,
-    LawyerModalComponent
+    LawyerModalComponent,
+    ViewAppointmentsComponent
   ],
   imports: [
     BrowserModule,
