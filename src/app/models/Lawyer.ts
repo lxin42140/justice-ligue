@@ -4,6 +4,7 @@ import { CaseInformationTemplate } from './CaseInformationTemplate';
 import { LegalIssue } from './LegalIssue';
 import { LawArea } from './LawArea';
 import { Case } from './Case';
+import { Meeting } from './Meeting';
 
 export class Lawyer extends User {
     yearsOfExperience: number;
@@ -12,6 +13,7 @@ export class Lawyer extends User {
     caseTemplates: CaseInformationTemplate[];
     budgets: LegalServiceBudget[];
     cases: Case[];
+    scheduledMeetings: Meeting[];
 
     constructor(
         firstName: string,
@@ -22,7 +24,8 @@ export class Lawyer extends User {
         experiencedIssues: LegalIssue[],
         caseTemplates: CaseInformationTemplate[],
         budgets: LegalServiceBudget[],
-        cases: Case[]
+        cases: Case[],
+        scheduledMeetings: Meeting[]
     ) {
         super(firstName, lastName, email);
         this.yearsOfExperience = yearsOfExperience;
@@ -31,5 +34,6 @@ export class Lawyer extends User {
         this.caseTemplates = caseTemplates;
         this.budgets = budgets;
         this.cases = cases;
+        this.scheduledMeetings = scheduledMeetings;
     }
 }
