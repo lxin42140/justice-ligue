@@ -41,6 +41,7 @@ export class LawyersService {
       caseTemplates: [],
       budgets: [],
       cases: [],
+      scheduledMeetings: []
     }]
   }
 }
