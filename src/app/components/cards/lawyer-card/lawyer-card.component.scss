@@ -1,0 +1,26 @@
+.lawyer-card {
+}
+
+h3 {
+  margin: 0;
+}
+
+h5 {
+  color: #828282;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  width: auto;
+  margin: 0 10px;
+}
+
+.modal {
+  width: 60%;
+  height: 60%;
+}
