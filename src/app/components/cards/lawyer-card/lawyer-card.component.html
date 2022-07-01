@@ -3,7 +3,7 @@
   <h3>Lawyer 1</h3>
   <h5>Lawyer firm</h5>
   <div class="buttons">
-    <button class="button" mat-raised-button>View Profile</button>
-    <button class="button" mat-raised-button color="primary">Book a slot</button>
+    <button class="button" mat-raised-button (click)="openModal(true)">View Profile</button>
+    <button class="button" mat-raised-button color="primary" (click)="openModal(false)">Book a slot</button>
   </div>
 </mat-card>

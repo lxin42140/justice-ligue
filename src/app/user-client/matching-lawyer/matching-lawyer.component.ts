@@ -18,7 +18,7 @@ export class MatchingLawyerComponent implements OnInit {
 
   selectedLawArea: LawArea | undefined;
   selectedLegalIssue: LegalIssue | undefined;
-  selectedLegalServiceCategory: string | undefined;
+  selectedLegalServiceCategory: string | undefined; //TODO:
 
   constructor(
     private router: Router,
@@ -60,6 +60,7 @@ export class MatchingLawyerComponent implements OnInit {
   }
 
   submit() {
+    //TODO: create the case here, store in service
     if (this.selectedLegalServiceCategory) {
       this.router.navigate(['/client/all-lawyers', this.selectedLawArea?.areaName, this.selectedLegalIssue?.issueName, this.selectedLegalServiceCategory]);
     }

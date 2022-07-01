@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { LawAreaEnum } from '../models/enums/law-area.enum'; 
+import { LawAreaEnum } from '../models/enums/law-area.enum';
 import { LegalIssueEnum } from '../models/enums/legal-issue.enum';
+import { Lawyer } from '../models/Lawyer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LawyersService {
 
-  allLawyers: any[] = []; //change to lawyer object when pushed
+  allLawyers: Lawyer[] = [];
 
   constructor() {
     this.allLawyers = [{
@@ -15,18 +16,31 @@ export class LawyersService {
       lastName: 'Smith',
       email: 'johnsmith@gmail.com',
       yearsOfExperience: 10,
-      experiencedSubjectMatters: [{
-        subjectName: LawAreaEnum.CRIMINAL,
-        subjectDescription: '',
-        lawSubjectMatterExamples: [{
-          exampleName: LegalIssueEnum.DRUG_OFFENCES,
-          exampleDescription: ''
+      practiceAreas: [{
+        areaName: LawAreaEnum.CRIMINAL,
+        areaDescription: '',
+        associatedLegalIssues: [{
+          issueName: LegalIssueEnum.DRUG_OFFENCES,
+          issueDescription: '',
+          associatedLegalArea: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: []
+          }]
         }]
       }],
-      experiencedExamples: [{
-        exampleName: LegalIssueEnum.DRUG_OFFENCES,
-        exampleDescription: ''
-      }]
+      experiencedIssues: [{
+        issueName: LegalIssueEnum.DRUG_OFFENCES,
+        issueDescription: '',
+        associatedLegalArea: [{
+          areaName: LawAreaEnum.CRIMINAL,
+          areaDescription: '',
+          associatedLegalIssues: []
+        }]
+      }],
+      caseTemplates: [],
+      budgets: [],
+      cases: [],
     }]
   }
 }

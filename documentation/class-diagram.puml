@@ -47,10 +47,13 @@ class Document {
 class Case {
     caseTitle: string
     caseDescription: String
+    clientRemarks: string
+    lawyerRemarks: string
     caseStatus: string
     caseFields: map
     client: Client
     lawyer: Lawyer
+    meetings: Meeting[]
     associatedLawAreas: LawArea[]
     associatedLegalIssues: LegalIssue[]
     requiredLegalServices: LegalService[]
