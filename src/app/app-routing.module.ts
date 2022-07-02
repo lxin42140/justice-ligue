@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/home/home.component';
 import { MatchingLawyerComponent } from './user-client/matching-lawyer/matching-lawyer.component';
 import { AllLawyersComponent } from './user-client/all-lawyers/all-lawyers.component';
+import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cases.component';
 import { ViewConsultationsComponent } from './user-client/view-consultations/view-consultations.component';
 import { CaseTemplateComponent } from './user-lawyer/case-template/case-template.component';
 
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'lawyer/view-appointments',
     component: ViewAppointmentsComponent
+  },
+  {
+    path: 'lawyer/view-all-cases',
+    component: ViewAllCasesComponent
   },
   {
     path: 'client/view-consultations',

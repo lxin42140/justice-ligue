@@ -30,6 +30,7 @@ import { LawyerCardComponent } from './components/cards/lawyer-card/lawyer-card.
 import { LawyerModalComponent } from './components/modal/lawyer-modal/lawyer-modal.component';
 import { ViewAppointmentsComponent } from './user-lawyer/view-appointments/view-appointments.component';
 import { CaseDetailComponent } from './shared/case-detail/case-detail.component';
+import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cases.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
 import { CaseTemplateComponent } from './user-lawyer/case-template/case-template.component';
@@ -47,7 +48,8 @@ import { DataTablesModule } from 'angular-datatables';
     LawyerModalComponent,
     ViewAppointmentsComponent,
     CaseDetailComponent,
-    CaseTemplateComponent
+    CaseTemplateComponent,
+    ViewAllCasesComponent
   ],
   imports: [
     FormsModule,

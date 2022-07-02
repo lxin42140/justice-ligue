@@ -1,0 +1,45 @@
+.left-profile {
+    width: 10%;
+    float: left;
+    margin-top: 0%;
+
+}
+
+.title{
+    font-weight: bold;
+    text-align: left;
+    margin-left:10%;
+    margin-top: 2.5%;
+    
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.right-profile {
+    width: 90%;
+    display: inline-block;
+    display: flex;
+}
+
+mat-card{
+    min-height: 100px;
+    overflow: hidden;
+    
+}
+
+.icon-display {
+    transform: scale(6);
+    float:center;
+    vertical-align: middle;
+ }
+
+.title{
+    width:40%;
+}
+
+.category{
+    float:left;
+    margin-left: 50%; 
+}

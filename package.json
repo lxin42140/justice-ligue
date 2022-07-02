@@ -26,6 +26,7 @@
     "angular-datatables": "^13.1.0",
     "firebase": "^9.8.4",
     "moment": "^2.29.3",
+    "ng": "^0.0.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

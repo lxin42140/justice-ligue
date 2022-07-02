@@ -1,0 +1,37 @@
+<div class="body-container container">
+    <mat-card style="margin: 10px 0" *ngFor="let case of allCases">
+        <div class="left-profile"> 
+            <mat-icon style="font-size: 80px">account_circle</mat-icon>
+        </div>
+        <h1 class="title">
+            {{case.caseTitle}}
+        </h1> <br>
+
+        <div class="right-profile" style="display: inline-block;">
+            <div style="width: 70%; float: left;"> 
+                <div class="bold"> Title:
+                    <mat-chip color="black" style="float: right; margin-right:77%">{{case.associatedLawAreas[0].areaName}}</mat-chip> 
+                </div>
+                <div class="bold">Type: 
+                <mat-chip color="primary" style="float: right; margin-right:76%">{{case.associatedLegalIssues[0].issueName}}</mat-chip> 
+                </div>
+                <div class="bold">Category: 
+                <mat-chip color="primary" style="float: right; margin-right:75%">{{case.requiredLegalServices[0].serviceName}}</mat-chip> 
+                </div><br>
+                <div>
+                    <div class="bold">Description:</div> 
+                    <p>{{case.caseDescription}}</p>
+                </div><br>
+            </div>
+            <div style="margin-left: 80%;">
+                <div *ngIf="case.clientRemarks || case.lawyerRemarks" class="bold">Remarks: 
+                </div><br>
+                <li *ngIf="case.clientRemarks">{{case.clientRemarks}} </li>
+                <li *ngIf="case.lawyerRemarks">{{case.lawyerRemarks}}</li>
+                <button mat-raised-button style="float: bottom; margin-left:25%;margin-top:20%;" color="primary" (click)="openModal()"> MORE INFO</button>
+            </div> <br>
+            
+        </div>
+        
+    </mat-card>
+</div>
