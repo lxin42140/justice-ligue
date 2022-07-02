@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Case } from 'src/app/models/Case';
 import { CaseDetailComponent } from 'src/app/shared/case-detail/case-detail.component';
 import { DummyCase1, DummyCase2, DummyCase3 } from 'src/app/data/data';
+import { CaseDetailModalComponent } from 'src/app/shared/case-detail-modal/case-detail-modal.component';
 
 @Component({
   selector: 'app-view-all-cases',
@@ -21,7 +22,7 @@ export class ViewAllCasesComponent implements OnInit {
   }
 
   async openModal() {
-    const dialogueToShow = this.dialog.open(CaseDetailComponent, {
+    const dialogueToShow = this.dialog.open(CaseDetailModalComponent, {
       width: '80%',
       height: '80%',
       data: { caseToShow: DummyCase1 }
