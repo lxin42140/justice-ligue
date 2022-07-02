@@ -37,12 +37,10 @@
 
 <mat-sidenav-container>
   <mat-sidenav class="sidenav" #sidenav mode="push" [(opened)]="opened">
-    <p>Testing</p>
-    <p>Testing</p>
-    <p>Testing</p>
-    <p>Testing</p>
-    <p>Testing</p>
-    <p>Testing</p>
+    <div style="text-align: left; margin-left: 2%;">
+      <p *ngIf="!accountService.isClient" (click)="navigate(0)">View Calender</p>
+      <p *ngIf="!accountService.isClient" (click)="navigate(1)">View Case Templates</p>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>

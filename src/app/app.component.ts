@@ -26,6 +26,33 @@ export class AppComponent {
     this.router.navigate(["/home"]);
   }
 
+  navigate(pageToDirect: number) {
+    if (this.accountService.isClient) {
+      switch (pageToDirect) {
+        case (0):
+          this.router.navigate(['/client/matching'])
+          break;
+        case (1):
+          this.router.navigate(['/client/view-consultations']);
+          break;
+        default:
+          break;
+      }
+    } else {
+      switch (pageToDirect) {
+        case (0):
+          this.router.navigate(['/lawyer/view-appointments'])
+          break;
+        case (1):
+          this.router.navigate(['/lawyer/case-templates']);
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+
 }
 
 // case created when selecting options. user choose timeslot, fill in template -> use the values to update case

@@ -41,13 +41,13 @@ export const DummyLawyer: Lawyer = {
     scheduledMeetings: []
 }
 
-const requiredFields = new Map<string, string>();
+export const requiredFields = new Map<string, string>();
 requiredFields.set('Enter a title for the case.', '');
 requiredFields.set('Enter a description for the case.', '');
 requiredFields.set('How long has the dispute lasted?', '');
 requiredFields.set('Enter the issues that you have encountered.', '');
 
-const requiredDocuments: Document[] =[{
+export const requiredDocuments: Document[] = [{
     documentName: 'Contract (if available)',
     documentDescription: '',
     documentURL: '',
@@ -56,26 +56,48 @@ const requiredDocuments: Document[] =[{
     // associatedCase: {} as unknown as Case,
 }]
 
-const caseInformationTemplates: CaseInformationTemplate[] = [{
-    requiredFields: requiredFields,
-    lawAreas: [{
-        areaName: LawAreaEnum.CRIMINAL,
-        areaDescription: '',
-        associatedLegalIssues: [{
+export const caseInformationTemplates: CaseInformationTemplate[] = [
+    {
+        requiredFields: requiredFields,
+        lawAreas: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: [{
+                issueName: LegalIssueEnum.DRUG_OFFENCES,
+                issueDescription: '',
+            }]
+        }],
+        legalIssues: [{
             issueName: LegalIssueEnum.DRUG_OFFENCES,
             issueDescription: '',
-        }]
-    }],
-    legalIssues: [{
-        issueName: LegalIssueEnum.DRUG_OFFENCES,
-        issueDescription: '',
-    }],
-    requiredDocumentTemplates: [
-        
-    ],
-    createdByLawyer: DummyLawyer,
-    estimatedBudget: undefined as unknown as LegalServiceBudget,
-}];
+        }],
+        requiredDocumentTemplates: [
+
+        ],
+        createdByLawyer: DummyLawyer,
+        estimatedBudget: undefined as unknown as LegalServiceBudget,
+    },
+    {
+        requiredFields: requiredFields,
+        lawAreas: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: [{
+                issueName: LegalIssueEnum.DRUG_OFFENCES,
+                issueDescription: '',
+            }]
+        }],
+        legalIssues: [{
+            issueName: LegalIssueEnum.DRUG_OFFENCES,
+            issueDescription: '',
+        }],
+        requiredDocumentTemplates: [
+
+        ],
+        createdByLawyer: DummyLawyer,
+        estimatedBudget: undefined as unknown as LegalServiceBudget,
+    }
+];
 
 DummyLawyer.caseTemplates = caseInformationTemplates;
 
