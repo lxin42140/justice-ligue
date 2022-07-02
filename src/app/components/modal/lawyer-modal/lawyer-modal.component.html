@@ -1,0 +1,90 @@
+<div class="container">
+
+  <div *ngIf="showEditFormPage" class="booking-container">
+    <h1>Fill in the required fields.</h1>
+    <h3>The lawyers can review these information beforehand, thus saving time during the meeting.</h3>
+
+    <mat-form-field *ngFor="let field of requiredFields | keyvalue; trackBy:trackByFn" appearance="fill">
+      <mat-label>{{field.key}}</mat-label>
+      <textarea matInput [ngModel]="field.value" (ngModelChange)="updateFields(field.key, $event)"></textarea>
+    </mat-form-field>
+
+    <div class="row" style="align-items: center;" *ngFor="let document of requiredDocuments; let i = index;" appearance="fill">
+      <input class="form-control" type="file" (change)="onChange(i, $event)">
+      <!-- <button mat-raised-button color="primary" (click)="onUpload()">
+        Upload
+      </button> -->
+    </div>
+  </div>
+
+  <div *ngIf="!showEditFormPage && viewProfile" class="profile-container">
+    <img src="../../../../assets/images/cover.jpg" class="image" />
+    <div>
+      <div class="row information">
+        <img src="../../../../assets/images/avatar.jpeg" class="avatar" />
+        <div>
+          <h1>Lawyer 1</h1>
+          <h3>200 cases</h3>
+          <h4>Specialises in homicide</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!showEditFormPage && !viewProfile" class="booking-container">
+    <h1>Book a slot</h1>
+    <h3>Select available date and time for the consultation</h3>
+    <div class="row all-timeslots">
+      <div *ngFor="let dayTimeslots of timeslots | keyvalue" class="day-timeslots">
+        <div class="row" style="margin-bottom: 10px;">
+          <div
+            [ngClass]="{'indicator': true, 'active': selectedTimeslot && selectedTimeslot.day.date === dayTimeslots.key, 'inactive': !selectedTimeslot || selectedTimeslot.day.date !== dayTimeslots.key}">
+          </div>
+          <div>
+            <div [ngSwitch]="dayTimeslots.value[0].day.dayOfWeek">
+              <span *ngSwitchCase="0">SUN</span>
+              <span *ngSwitchCase="1">MON</span>
+              <span *ngSwitchCase="2">TUE</span>
+              <span *ngSwitchCase="3">WED</span>
+              <span *ngSwitchCase="4">THU</span>
+              <span *ngSwitchCase="5">FRI</span>
+              <span *ngSwitchCase="6">SAT</span>
+            </div>
+            <h1 style="margin: 0">{{dayTimeslots.key}}</h1>
+          </div>
+        </div>
+
+        <div *ngFor="let timeslot of dayTimeslots.value">
+          <div [ngClass]="{'card': true, 'active': checkTimeslotIsActive(timeslot)}"
+            (click)="selectTimeslot(dayTimeslots.key, timeslot.time.startTime)">
+            <p [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}">{{timeslot.time.startTime}} -
+              {{timeslot.time.endTime}}</p>
+            <div [ngClass]="{'row': true, 'card-content-active': checkTimeslotIsActive(timeslot)}"
+              style="align-items: center;">
+              <mat-icon [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}" style="margin-right: 5px;">
+                access_time</mat-icon>
+              <span [ngClass]="{'card-content-active': checkTimeslotIsActive(timeslot)}"
+                class="card-content">{{timeslot.time.duration}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="showEditFormPage" class="row button-container">
+    <button mat-raised-button (click)="closeModal()">Back</button>
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+  </div>
+
+  <div *ngIf="!showEditFormPage && !viewProfile" class="row button-container">
+    <button mat-raised-button (click)="closeModal()">Back</button>
+    <button mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined" (click)="updateCase()">
+      Book slot</button>
+  </div>
+
+  <div *ngIf="!showEditFormPage && viewProfile" class="row button-container">
+    <button mat-raised-button (click)="closeModal()">Back</button>
+    <button mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
+  </div>
+
+</div>

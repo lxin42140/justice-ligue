@@ -1,5 +1,72 @@
 @startuml
 
+class LawArea {
+    areaName: string
+    areaDescription: string
+    associatedLegalIssues: LegalIssue[]
+}
+
+class LegalIssue {
+    issueName: string
+    issueDescription: string
+    associatedLegalArea: LawArea[]
+}
+
+class LegalService {
+    serviceName: string
+    serviceDescription: string
+}
+
+class LegalServiceBudget {
+    budgetLowerBound: number
+    budgetHigherBound: number
+    legalServices: LegalService[]
+    lawAreas: LawArea[]
+    legalIssues: LegalIssue[]
+    lawyer: Lawyer
+}
+
+class CaseInformationTemplate {
+    requiredFields: map
+    lawAreas: LawArea[]
+    legalIssues: LegalIssue[]
+    requiredDocumentTemplates: Document[]
+    createdByLawyer: Lawyer
+    estimatedBudget: LegalServiceBudget
+}
+
+class Document {
+    documentName: string
+    documentDescription: string
+    documentURL: string
+    isSensitive: boolean
+    submittedUser: User
+    associatedCase: Case
+}
+
+class Case {
+    caseTitle: string
+    caseDescription: String
+    clientRemarks: string
+    lawyerRemarks: string
+    caseStatus: string
+    caseFields: map
+    client: Client
+    lawyer: Lawyer
+    meetings: Meeting[]
+    associatedLawAreas: LawArea[]
+    associatedLegalIssues: LegalIssue[]
+    requiredLegalServices: LegalService[]
+    documents: Document[]
+    providedLegalAdvices: LegalAdvice[]
+}
+
+class LegalAdvice {
+    adviceSummary: string
+    associateCase: Case
+    lawyer: Lawyer
+}
+
 class User {
     firstName: string
     lastName: string
@@ -7,72 +74,54 @@ class User {
 }
 
 class Client {
-
+    cases: Case[]
+    arrangedMeetings: Meeting[]
 }
 
 class Lawyer {
     yearsOfExperience: number
-    experiencedSubjectMatters: LawSubjectMatter[]
-    experiencedExamples: LawSubjectMatterExample[]
+    practiceAreas: LawArea[]
+    experiencedIssues: LegalIssue[]
+    caseTemplates: CaseInformationTemplate[]
+    budgets: LegalServiceBudget[]
+    cases: Case[]
+    scheduledMeetings: Meeting[]
 }
 
-class LawSubjectMatter {
-    subjectName: string
-    subjectDescription: string
-    lawSubjectMatterExamples: LawSubjectMatterExample[]
-}
-
-class LawSubjectMatterExample {
-    exampleName: string
-    exampleDescription: string
-}
-
-class LegalServiceCategory {
-    serviceName: string
-    serviceDescription: string
-}
-
-class LawyerServiceCosting {
-    lawSubjectMatter: LawSubjectMatter
-    specificExamples: LawSubjectMatterExample[]
-    estimatedCostLowerBound: number
-    estimatedCostHigherBound: number
+class Meeting {
+    startDateTime: Date
+    endDateTime: Date
+    requestedCases: Case[]
+    acceptedCase: Case
     lawyer: Lawyer
 }
 
-class CaseTemplate {
-    lawSubjectMatter: LawSubjectMatter
-    associatedExamples: LawSubjectMatterExample[]
-    createdByLawyer: Lawyer
-    documents: Document[]
-    requiredFields: map
-}
 
-class Document {
-    documentName: string
-    documentDescription: string
-    documentURL: string
-}
+User <|- Client
+User <|- Lawyer
 
-class Case {
+LawArea }|--|{ LegalIssue
+LawArea }o-- Lawyer
 
-}
+LegalIssue }o-- Lawyer
 
-note left of LawSubjectMatter 
-Civil
-- Small claims, Employment claims, Neighbour disputes, Bankruptcy, Breach of contract, Commercial disputes
-Criminal
-- Homicide, Drug offences, Sexual offences, Cheating, Traffic or regulatory offences.
-Family
-- Divorce, Family violence, Probate and administration, Maintenance, Adoption, Child protection.
-end note
+CaseInformationTemplate }|-- LegalIssue
+CaseInformationTemplate }o-- LawArea
+CaseInformationTemplate --|| Lawyer
 
-note right of LegalServiceCategory::serviceDescription
-- Consultation for legal advice or the review of documents (e.g. wills, leases, and agreements).
-- Mediation to help disputing parties to reach a mutually agreeable settlement.
-- Arbitration to make a binding decision to settle a dispute.
-- Preparation of legal documents.
-- Representation of clients in negotiations, court, or arbitration.
-end note
+LegalServiceBudget ||-- LegalService
+LawArea }|-- LegalServiceBudget
+LegalIssue }|-- LegalServiceBudget
+LegalServiceBudget }o--|| Lawyer
+
+Document --|| User
+Case ||--o{ Document
+
+LegalAdvice }o--|| Lawyer
+LegalAdvice }o--|| Case
+
+Case --|{ LawArea
+Case --|{ LegalIssue
+Case --|{ LegalService
 
 @enduml

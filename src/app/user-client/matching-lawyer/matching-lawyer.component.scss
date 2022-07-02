@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+.blue-text {
+  color: #2F80ED;
+}
+
+mat-card {
+  width: 70%;
+  margin: 5% 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page {
+  align-items: center;
+  margin: 10px;
+}
+
+.progress-bar {
+  width: 40%;
+  justify-content: center;
+}
+
+.progress-step {
+  height: 5px;
+  width: 30%;
+  margin: 5px;
+}
+
+.active {
+  background-color: #2F80ED;
+}
+
+.inactive {
+  background-color: #BDBDBD;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.button {
+  margin: 10px;
+}
