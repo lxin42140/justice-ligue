@@ -31,7 +31,7 @@ import { LawyerModalComponent } from './components/modal/lawyer-modal/lawyer-mod
 import { ViewAppointmentsComponent } from './user-lawyer/view-appointments/view-appointments.component';
 import { CaseDetailComponent } from './shared/case-detail/case-detail.component';
 import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cases.component';
-
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,8 @@ import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cas
     MatCheckboxModule,
     MatCardModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,31 @@
 .left-profile {
-    width: 30%;
+    width: 15%;
+    float: left;
 }
 
 .right-profile {
-    width: 70%;
-  }
+    width: 85%;
+    display: inline-block;
+    display: flex;
+}
+
+mat-card{
+    min-height: 100px;
+    overflow: hidden;
+    
+}
+
+.icon-display {
+    transform: scale(6);
+    float:center;
+    vertical-align: middle;
+ }
+
+.title{
+    width:40%;
+}
+
+.category{
+    float:left;
+    margin-left: 50%; 
+}

@@ -1,23 +1,31 @@
 <div class="body-container container">
     <h1> Here is your summary of cases</h1>
     <mat-card>
-         <div class="left-profile"> 
-            <p>Name</p>
-            <p>Age</p>
+        <div class="left-profile"> 
+            <mat-icon style="font-size: 80px;height:80px;width:80px;">account_circle</mat-icon>
+            <p>Name: Adam Pie</p>
+            <p>Age: 64</p>
         </div>
 
-        <div class="right-profile">
-            <mat-card-title> 
-                <p> Title: Family </p>
-                <p> Category: Divorce</p>
-            </mat-card-title>
-            <mat-card-content>
-                <p>Description</p>
-                <p>lawyers Remarks</p>
-            </mat-card-content>
-        </div>
+        <div class="right-profile" style="display: inline-block;">
+            <div style="width: 40%; float: left;"> 
+                Title: 
+                <mat-chip color="black" style="float: right; margin-right:75%"> Family</mat-chip> 
+            </div>
+            <div style="margin-left: 30%; ">
+                Category: 
+                <mat-chip color="primary" style="float: right; margin-right:65%"> Divorce</mat-chip> 
+            </div> <br>
+            <div>Description:
+                <p>Mr Adam Pie wants to file for a dispute trial as he bought a salon package wirth $500 on 2/7/2021. However, the salon closed it's outlets islandwide in 2022 without compensating customers with leftover credits in the package.
+                </p>
+            </div><br>
+            <div>Lawyer's Remarks: 
+                <p>N/A</p>
+            </div><br>
 
-       
+            <button mat-raised-button style="float: right; margin-right:5%;" color="primary"> More Info</button>
+        </div>
         
     </mat-card>
 </div>
