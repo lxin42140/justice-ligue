@@ -29,6 +29,7 @@ export class ClientScheduleService {
   createCase(lawArea: LawAreaEnum, legalIssue: LegalIssueEnum, service: LegalServiceEnum) {
     const lawAreas = this.lawSubjectService.lawSubjects.filter(x => x.areaName === lawArea);
     this.createdCase = {
+      caseId: (Math.random() + 1).toString(36).substring(7),
       caseTitle: '',
       caseDescription: '',
       clientRemarks: '',
