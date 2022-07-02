@@ -32,6 +32,8 @@ import { ViewAppointmentsComponent } from './user-lawyer/view-appointments/view-
 import { CaseDetailComponent } from './shared/case-detail/case-detail.component';
 import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cases.component';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatCardModule,
     MatDialogModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

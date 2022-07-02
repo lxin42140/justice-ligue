@@ -1,4 +1,4 @@
-import { DummyCase1, DummyCase2, DummyClient, DummyLawyer } from './../data/data';
+import { DummyCase1, DummyCase2, DummyCase3, DummyClient, DummyLawyer } from './../data/data';
 import { Meeting } from './../models/Meeting';
 import { Injectable } from '@angular/core';
 import moment from 'moment';
@@ -17,6 +17,11 @@ startDate1.setMinutes(0);
 startDate1.setSeconds(0);
 startDate1.setMilliseconds(0);
 
+const startDate3 = moment().add(1, 'day').toDate();
+startDate1.setHours(11);
+startDate1.setMinutes(0);
+startDate1.setSeconds(0);
+startDate1.setMilliseconds(0);
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +42,12 @@ export class MeetingService {
         startDateTime: startDate2,
         endDateTime: moment(startDate2).add(30, 'minutes').toDate(),
         associatedCase: DummyCase2,
+        lawyer: DummyLawyer
+      },
+      {
+        startDateTime: startDate3,
+        endDateTime: moment(startDate3).add(30, 'minutes').toDate(),
+        associatedCase: DummyCase3,
         lawyer: DummyLawyer
       }
     ]

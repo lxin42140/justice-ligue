@@ -9,14 +9,19 @@ import { LawAreaEnum } from '../models/enums/law-area.enum';
 import { LegalIssueEnum } from '../models/enums/legal-issue.enum';
 import { LegalService } from '../models/LegalService';
 import { User } from '../models/User';
-import { Document } from '../models/Document';
 import { LegalServiceBudget } from '../models/LegalServiceBudget';
+import { Document } from '../models/Document';
+import { CaseInformationTemplate } from '../models/CaseInformationTemplate';
+
+const id1 = (Math.random() + 1).toString(36).substring(7);
+const id2 = (Math.random() + 1).toString(36).substring(7);
+const id3 = (Math.random() + 1).toString(36).substring(7);
 
 export const DummyLawyer: Lawyer = {
     firstName: 'John',
     lastName: 'Smith',
     email: 'johnsmith@gmail.com',
-    id: (Math.random() + 1).toString(36).substring(7),
+    id: id1,
     yearsOfExperience: 10,
     practiceAreas: [{
         areaName: LawAreaEnum.CRIMINAL,
@@ -37,19 +42,21 @@ export const DummyLawyer: Lawyer = {
 }
 
 const requiredFields = new Map<string, string>();
-requiredFields.set('What is your age?', '');
-requiredFields.set('What is your budget?', '');
+requiredFields.set('Enter a title for the case.', '');
+requiredFields.set('Enter a description for the case.', '');
+requiredFields.set('How long has the dispute lasted?', '');
+requiredFields.set('Enter the issues that you have encountered.', '');
 
-const requiredDocuments = <Document[]>[{
-    documentName: 'Marriage Certificate',
+const requiredDocuments: Document[] =[{
+    documentName: 'Contract (if available)',
     documentDescription: '',
     documentURL: '',
     isSensitive: false,
     submittedUser: {} as unknown as User,
-    associatedCase: {} as unknown as Case,
+    // associatedCase: {} as unknown as Case,
 }]
 
-const caseInformationTemplates = [{
+const caseInformationTemplates: CaseInformationTemplate[] = [{
     requiredFields: requiredFields,
     lawAreas: [{
         areaName: LawAreaEnum.CRIMINAL,
@@ -63,7 +70,9 @@ const caseInformationTemplates = [{
         issueName: LegalIssueEnum.DRUG_OFFENCES,
         issueDescription: '',
     }],
-    requiredDocumentTemplates: requiredDocuments,
+    requiredDocumentTemplates: [
+        
+    ],
     createdByLawyer: DummyLawyer,
     estimatedBudget: undefined as unknown as LegalServiceBudget,
 }];
@@ -74,7 +83,7 @@ export const DummyClient: Client = {
     firstName: 'Adam',
     lastName: 'Pie',
     email: 'johnsmith@gmail.com',
-    id: (Math.random() + 1).toString(36).substring(7),
+    id: id2,
     cases: [],
     scheduledMeetings: []
 }
@@ -94,7 +103,24 @@ export const DummyLegalService1: LegalService = {
     serviceDescription: ''
 }
 
+export const DummyDocument1: Document = {
+    documentName: 'Marriage Certificate',
+    documentDescription: '',
+    documentURL: 'wwww.google.com',
+    isSensitive: false,
+    submittedUser: DummyClient
+}
+
+export const DummyDocument2: Document = {
+    documentName: 'Marriage Certificate',
+    documentDescription: '',
+    documentURL: 'wwww.google.com',
+    isSensitive: false,
+    submittedUser: DummyClient
+}
+
 export const DummyCase1: Case = {
+    caseId: id1,
     caseTitle: 'Divorce',
     caseDescription: 'Looking to divorce and get settlement',
     clientRemarks: '',
@@ -120,12 +146,15 @@ export const DummyCase1: Case = {
     associatedLegalIssues: [DummyLegalIssue2],
     requiredLegalServices: [DummyLegalService1],
     documents: [
+        DummyDocument1,
+        DummyDocument2
     ],
     providedLegalAdvices: [
     ]
 }
 
 export const DummyCase2: Case = {
+    caseId: id2,
     caseTitle: 'Drug abuse',
     caseDescription: 'Looking to go court for drug abuse',
     clientRemarks: '',
@@ -150,6 +179,41 @@ export const DummyCase2: Case = {
     associatedLegalIssues: [DummyLegalIssue2],
     requiredLegalServices: [DummyLegalService1],
     documents: [
+        DummyDocument1,
+        DummyDocument2
+    ],
+    providedLegalAdvices: [
+    ]
+}
+
+export const DummyCase3: Case = {
+    caseId: id3,
+    caseTitle: 'Dog abuse',
+    caseDescription: 'Looking to go court for drug abuse',
+    clientRemarks: '',
+    lawyerRemarks: '',
+    caseStatus: CaseStatusEnum.MEETING_BOOKED,
+    caseFields: new Map<string, string>([
+        ["Years of abuse", "5"],
+        ["first time offense", "true"]
+    ]),
+    client: DummyClient,
+    lawyer: DummyLawyer,
+    meetings: [
+
+    ],
+    associatedLawAreas: [
+        {
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: [DummyLegalIssue2]
+        }
+    ],
+    associatedLegalIssues: [DummyLegalIssue2],
+    requiredLegalServices: [DummyLegalService1],
+    documents: [
+        DummyDocument1,
+        DummyDocument2
     ],
     providedLegalAdvices: [
     ]

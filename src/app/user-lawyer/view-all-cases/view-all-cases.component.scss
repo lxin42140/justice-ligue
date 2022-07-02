@@ -1,10 +1,24 @@
 .left-profile {
-    width: 15%;
+    width: 10%;
     float: left;
+    margin-top: 0%;
+
+}
+
+.title{
+    font-weight: bold;
+    text-align: left;
+    margin-left:10%;
+    margin-top: 2.5%;
+    
+}
+
+.bold{
+    font-weight: bold;
 }
 
 .right-profile {
-    width: 85%;
+    width: 90%;
     display: inline-block;
     display: flex;
 }

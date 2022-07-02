@@ -1,30 +1,36 @@
 <div class="body-container container">
-    <h1> Here is your summary of cases</h1>
-    <mat-card>
+    <mat-card style="margin: 10px 0" *ngFor="let case of allCases">
         <div class="left-profile"> 
-            <mat-icon style="font-size: 80px;height:80px;width:80px;">account_circle</mat-icon>
-            <p>Name: Adam Pie</p>
-            <p>Age: 64</p>
+            <mat-icon style="font-size: 80px">account_circle</mat-icon>
         </div>
+        <h1 class="title">
+            {{case.caseTitle}}
+        </h1> <br>
 
         <div class="right-profile" style="display: inline-block;">
-            <div style="width: 40%; float: left;"> 
-                Title: 
-                <mat-chip color="black" style="float: right; margin-right:75%"> Family</mat-chip> 
+            <div style="width: 70%; float: left;"> 
+                <div class="bold"> Title:
+                    <mat-chip color="black" style="float: right; margin-right:77%">{{case.associatedLawAreas[0].areaName}}</mat-chip> 
+                </div>
+                <div class="bold">Type: 
+                <mat-chip color="primary" style="float: right; margin-right:76%">{{case.associatedLegalIssues[0].issueName}}</mat-chip> 
+                </div>
+                <div class="bold">Category: 
+                <mat-chip color="primary" style="float: right; margin-right:75%">{{case.requiredLegalServices[0].serviceName}}</mat-chip> 
+                </div><br>
+                <div>
+                    <div class="bold">Description:</div> 
+                    <p>{{case.caseDescription}}</p>
+                </div><br>
             </div>
-            <div style="margin-left: 30%; ">
-                Category: 
-                <mat-chip color="primary" style="float: right; margin-right:65%"> Divorce</mat-chip> 
+            <div style="margin-left: 80%;">
+                <div *ngIf="case.clientRemarks || case.lawyerRemarks" class="bold">Remarks: 
+                </div><br>
+                <li *ngIf="case.clientRemarks">{{case.clientRemarks}} </li>
+                <li *ngIf="case.lawyerRemarks">{{case.lawyerRemarks}}</li>
+                <button mat-raised-button style="float: bottom; margin-left:25%;margin-top:20%;" color="primary" (click)="openModal()"> MORE INFO</button>
             </div> <br>
-            <div>Description:
-                <p>Mr Adam Pie wants to file for a dispute trial as he bought a salon package wirth $500 on 2/7/2021. However, the salon closed it's outlets islandwide in 2022 without compensating customers with leftover credits in the package.
-                </p>
-            </div><br>
-            <div>Lawyer's Remarks: 
-                <p>N/A</p>
-            </div><br>
-
-            <button mat-raised-button style="float: right; margin-right:5%;" color="primary"> More Info</button>
+            
         </div>
         
     </mat-card>

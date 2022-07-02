@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { LawAreaEnum } from '../models/enums/law-area.enum';
 import { LegalIssueEnum } from '../models/enums/legal-issue.enum';
 import { LawArea } from '../models/LawArea';
+import { LegalService } from '../models/LegalService';
+import { LegalServiceEnum } from '../models/enums/LegalService.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ import { LawArea } from '../models/LawArea';
 export class LawSubjectService {
 
   lawSubjects: LawArea[] = [];
-  legalServiceCategories: string[] = []; //change when model has been created
+  legalServiceCategories: LegalService[] = []; //change when model has been created
 
   constructor() {
     this.lawSubjects = [{
@@ -182,7 +184,7 @@ export class LawSubjectService {
         },
       ]
     }]
-
-    this.legalServiceCategories = ['Consultation', 'Mediation', 'Arbitration', 'Preparation', 'Representation']
+    this.legalServiceCategories = Object.entries(LegalServiceEnum)
+      .map(([key, value]) => ({ serviceName: value, serviceDescription: '' }));
   }
 }

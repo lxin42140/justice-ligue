@@ -5,9 +5,10 @@ import { LawArea } from './LawArea';
 import { Lawyer } from './Lawyer';
 import { Client } from './Client';
 import { Meeting } from './Meeting';
-
+import { Document } from './Document';
 
 export class Case {
+    caseId: string | undefined;
     caseTitle: string
     caseDescription: String
     clientRemarks: string
@@ -15,7 +16,7 @@ export class Case {
     caseStatus: string
     caseFields: Map<string, string>
     client: Client
-    lawyer: Lawyer
+    lawyer: Lawyer | undefined
     meetings: Meeting[]
     associatedLawAreas: LawArea[]
     associatedLegalIssues: LegalIssue[]

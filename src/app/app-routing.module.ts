@@ -5,6 +5,7 @@ import { HomeComponent } from './shared/home/home.component';
 import { MatchingLawyerComponent } from './user-client/matching-lawyer/matching-lawyer.component';
 import { AllLawyersComponent } from './user-client/all-lawyers/all-lawyers.component';
 import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cases.component';
+import { ViewConsultationsComponent } from './user-client/view-consultations/view-consultations.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'lawyer/view-all-cases',
     component: ViewAllCasesComponent
+  },
+  {
+    path: 'client/view-consultations',
+    component: ViewConsultationsComponent
   }
 ];
 
