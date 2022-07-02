@@ -1,0 +1,72 @@
+<div style="display: flex; flex-direction: column; align-items: center">
+  <br />
+  <div style="display: flex;">
+    <h1 style="text-align: center; margin-bottom: -1%">Case Templates</h1>
+    &nbsp;&nbsp;&nbsp;
+    <button mat-raised-button color="primary">
+        + Template
+    </button>
+  </div>
+  <mat-card *ngFor="let template of templates" style="margin-bottom: -2%">
+    <div style="width: 50%; float: left">
+      <table>
+        <tr>
+          <td style="font-weight: bold">Areas:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <mat-chip-list *ngFor="let area of template.lawAreas">
+              <mat-chip>{{ area.areaName }}</mat-chip>
+            </mat-chip-list>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Issues:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <mat-chip-list *ngFor="let issue of template.legalIssues">
+              <mat-chip>{{ issue.issueName }}</mat-chip>
+            </mat-chip-list>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold">Required Documents:</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td
+            style="display: flex; flex-direction: column; align-items: center"
+          >
+            <mat-list *ngFor="let file of template.requiredDocumentTemplates">
+              <mat-list-item style="font-size: small">
+                <mat-icon>file_copy</mat-icon>
+                {{ file.documentName }}
+              </mat-list-item>
+            </mat-list>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="border-left: 1px solid black"></div>
+    <div style="width: 50%; float: right">
+      <h3 style="font-weight: bold; text-align: center">
+        Required Information
+      </h3>
+      <mat-list style="max-height: 100px">
+        <mat-list-item
+          *ngFor="
+            let entry of template.requiredFields | keyvalue;
+            let i = index
+          "
+        >
+          <span style="font-weight: bold">{{ i + 1 }}:</span>&nbsp;&nbsp;{{
+            entry.key
+          }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card>
+</div>

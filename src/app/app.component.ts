@@ -41,7 +41,7 @@ export class AppComponent {
     } else {
       switch (pageToDirect) {
         case (0):
-          this.router.navigate(['/lawyer/view-appointments'])
+          this.router.navigate(['lawyer/view-appointments'])
           break;
         case (1):
           this.router.navigate(['/lawyer/case-templates']);

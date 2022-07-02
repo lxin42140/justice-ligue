@@ -1,0 +1,59 @@
+.lawyer-card {
+}
+
+h3 {
+  margin: 0;
+}
+
+h5 {
+  color: #828282;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button {
+  width: auto;
+  margin: 0 10px;
+}
+
+.modal {
+  width: 60%;
+  height: 60%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-card {
+  width: 70%;
+  margin: 5% 15%;
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.lawyer-cards {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  // height: calc(100% - 32px);
+}
+
+.lawyer-card {
+  width: calc(50% - 20px);
+  margin: 10px !important;
+}
+
+.lawyer-card:last-child {
+  margin-bottom: 10px;
+}

@@ -54,52 +54,7 @@ export const requiredDocuments: Document[] = [{
     isSensitive: false,
     submittedUser: {} as unknown as User,
     // associatedCase: {} as unknown as Case,
-}]
-
-export const caseInformationTemplates: CaseInformationTemplate[] = [
-    {
-        requiredFields: requiredFields,
-        lawAreas: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: [{
-                issueName: LegalIssueEnum.DRUG_OFFENCES,
-                issueDescription: '',
-            }]
-        }],
-        legalIssues: [{
-            issueName: LegalIssueEnum.DRUG_OFFENCES,
-            issueDescription: '',
-        }],
-        requiredDocumentTemplates: [
-
-        ],
-        createdByLawyer: DummyLawyer,
-        estimatedBudget: undefined as unknown as LegalServiceBudget,
-    },
-    {
-        requiredFields: requiredFields,
-        lawAreas: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: [{
-                issueName: LegalIssueEnum.DRUG_OFFENCES,
-                issueDescription: '',
-            }]
-        }],
-        legalIssues: [{
-            issueName: LegalIssueEnum.DRUG_OFFENCES,
-            issueDescription: '',
-        }],
-        requiredDocumentTemplates: [
-
-        ],
-        createdByLawyer: DummyLawyer,
-        estimatedBudget: undefined as unknown as LegalServiceBudget,
-    }
-];
-
-DummyLawyer.caseTemplates = caseInformationTemplates;
+}];
 
 export const DummyClient: Client = {
     firstName: 'Adam',
@@ -240,3 +195,51 @@ export const DummyCase3: Case = {
     providedLegalAdvices: [
     ]
 }
+
+
+export const caseInformationTemplates: CaseInformationTemplate[] = [
+    {
+        requiredFields: requiredFields,
+        lawAreas: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: [{
+                issueName: LegalIssueEnum.DRUG_OFFENCES,
+                issueDescription: '',
+            }]
+        }],
+        legalIssues: [{
+            issueName: LegalIssueEnum.DRUG_OFFENCES,
+            issueDescription: '',
+        }],
+        requiredDocumentTemplates: [
+            DummyDocument1,
+            DummyDocument2
+        ],
+        createdByLawyer: DummyLawyer,
+        estimatedBudget: undefined as unknown as LegalServiceBudget,
+    },
+    {
+        requiredFields: requiredFields,
+        lawAreas: [{
+            areaName: LawAreaEnum.CRIMINAL,
+            areaDescription: '',
+            associatedLegalIssues: [{
+                issueName: LegalIssueEnum.DRUG_OFFENCES,
+                issueDescription: '',
+            }]
+        }],
+        legalIssues: [{
+            issueName: LegalIssueEnum.DRUG_OFFENCES,
+            issueDescription: '',
+        }],
+        requiredDocumentTemplates: [
+            DummyDocument1,
+            DummyDocument2
+        ],
+        createdByLawyer: DummyLawyer,
+        estimatedBudget: undefined as unknown as LegalServiceBudget,
+    }
+];
+
+DummyLawyer.caseTemplates = caseInformationTemplates;
