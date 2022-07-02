@@ -7,21 +7,18 @@ export class Document {
     documentURL: string;
     isSensitive: boolean;
     submittedUser: User;
-    associatedCase: Case;
 
     constructor(
         documentName: string,
         documentDescription: string,
         documentURL: string,
         isSensitive: boolean,
-        submittedUser: User,
-        associatedCase: Case
+        submittedUser: User
     ) {
         this.documentName = documentName;
         this.documentDescription = documentDescription;
         this.documentURL = documentURL;
         this.isSensitive = isSensitive;
         this.submittedUser = submittedUser;
-        this.associatedCase = associatedCase;
     }
 }

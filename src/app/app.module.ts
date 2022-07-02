@@ -30,6 +30,8 @@ import { LawyerCardComponent } from './components/cards/lawyer-card/lawyer-card.
 import { LawyerModalComponent } from './components/modal/lawyer-modal/lawyer-modal.component';
 import { ViewAppointmentsComponent } from './user-lawyer/view-appointments/view-appointments.component';
 import { CaseDetailComponent } from './shared/case-detail/case-detail.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { CaseDetailComponent } from './shared/case-detail/case-detail.component'
     MatCheckboxModule,
     MatCardModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,79 +1,42 @@
-<div class="container">
-  <div class="booking-container">
-    <h1>Booked Appointments</h1>
-    <br/>
-    <div class="row all-timeslots">
-      <div
-        *ngFor="let dayTimeslots of timeslots | keyvalue"
-        class="day-timeslots"
-      >
-        <div class="row">
-          <div
-            [ngClass]="{
-              indicator: true,
-              active:
-                selectedTimeslot &&
-                selectedTimeslot.day.date === dayTimeslots.key,
-              inactive:
-                !selectedTimeslot ||
-                selectedTimeslot.day.date !== dayTimeslots.key
-            }"
-          ></div>
-          <div>
-            <div [ngSwitch]="dayTimeslots.value[0].day.dayOfWeek">
-              <span *ngSwitchCase="0">SUN</span>
-              <span *ngSwitchCase="1">MON</span>
-              <span *ngSwitchCase="2">TUE</span>
-              <span *ngSwitchCase="3">WED</span>
-              <span *ngSwitchCase="4">THU</span>
-              <span *ngSwitchCase="5">FRI</span>
-              <span *ngSwitchCase="6">SAT</span>
-            </div>
-            <h1 style="margin: 0">{{ dayTimeslots.key }}</h1>
-          </div>
-        </div>
-
-        <div *ngFor="let timeslot of dayTimeslots.value">
-          <div
-            [ngClass]="{ card: true, active: checkTimeSlotIsBoooked(timeslot) }"
-          >
-            <p
-              [ngClass]="{
-                'card-content-active': checkTimeSlotIsBoooked(timeslot)
-              }"
-            >
-              {{ timeslot.time.startTime }} - {{ timeslot.time.endTime }}
-            </p>
-            <div
-              [ngClass]="{
-                row: true,
-                'card-content-active': checkTimeSlotIsBoooked(timeslot)
-              }"
-              style="align-items: center"
-            >
-              <mat-icon
-                [ngClass]="{
-                  'card-content-active': checkTimeSlotIsBoooked(timeslot)
-                }"
-                style="margin-right: 5px"
-                >access_time</mat-icon
-              >
-              <span
-                [ngClass]="{
-                  'card-content-active': checkTimeSlotIsBoooked(timeslot)
-                }"
-                class="card-content"
-                >{{ timeslot.time.duration }}</span
-              >
-            </div>
-          </div>
+<div style="display: flex; width: 100%; height: 100%">
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      width: 20%;
+      border-right: 1px solid black;
+    "
+  >
+    <div
+      *ngFor="let entry of meetingMap | keyvalue"
+      style="width: 100%; display: flex; flex-direction: column"
+    >
+      <button mat-raised-button color="primary">
+        {{ entry.key }}
+      </button>
+      <div *ngFor="let meeting of entry.value">
+        <div
+          [ngClass]="{
+            card: true,
+            active: selectedCase?.caseId === meeting.associatedCase.caseId
+          }"
+          (click)="displayCaseDetails(meeting.associatedCase)"
+        >
+          <p style="font-weight: bold; font-size: medium">
+            {{ meeting.associatedCase.caseTitle }}
+          </p>
+          <span class="card-content" style="display: flex; align-items: center">
+            <mat-icon style="margin-right: 5px"> access_time</mat-icon>
+            {{ meeting.startDateTime | date: "hh:mm a" }} -
+            {{ meeting.endDateTime | date: "hh:mm a" }}
+          </span>
+          <div style="align-items: center"></div>
         </div>
       </div>
+      <br />
     </div>
   </div>
-
-  <!-- <div class="row button-container">
-      <button *ngIf="viewProfile" mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
-      <button *ngIf="!viewProfile" mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined" (click)="updateCase()">Book slot</button>
-    </div> -->
+  <div style="width: 80%;">
+    <app-case-detail *ngIf="selectedCase" [caseToShow]="selectedCase"> </app-case-detail>
+  </div>
 </div>
