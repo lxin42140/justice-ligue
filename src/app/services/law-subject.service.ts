@@ -19,56 +19,55 @@ export class LawSubjectService {
         {
           issueName: LegalIssueEnum.SMALL_CLAIMS,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CIVIL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CIVIL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.EMPLOYMENT_CLAIMS,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CIVIL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CIVIL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.NEIGHBOUR_DISPUTES,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CIVIL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CIVIL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.BANKRUPTCY,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CIVIL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CIVIL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.BREACH_OF_CONTRACT,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CIVIL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CIVIL,
+          //   areaDescription: ''
+          // }]
         },
         {
           issueName: LegalIssueEnum.COMMERCIAL,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CIVIL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CIVIL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
       ]
     },
@@ -79,47 +78,47 @@ export class LawSubjectService {
         {
           issueName: LegalIssueEnum.HOMICIDE,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CRIMINAL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.DRUG_OFFENCES,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CRIMINAL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.SEXUAL_OFFENCES,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CRIMINAL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.CHEATING,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CRIMINAL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.TRAFFIC_OR_REGULATORY,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.CRIMINAL,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.CRIMINAL,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         }
       ]
     },
@@ -130,56 +129,56 @@ export class LawSubjectService {
         {
           issueName: LegalIssueEnum.DIVORCE,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.FAMILY,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.FAMILY,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.FAMILY_VIOLENCE,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.FAMILY,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.FAMILY,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.PROBATE_AND_ADMIN,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.FAMILY,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.FAMILY,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.MAINTENANCE,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.FAMILY,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.FAMILY,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.ADOPTION,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.FAMILY,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.FAMILY,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
         {
           issueName: LegalIssueEnum.CHILD_PROTECTION,
           issueDescription: '',
-          associatedLegalArea: [{
-            areaName: LawAreaEnum.FAMILY,
-            areaDescription: '',
-            associatedLegalIssues: []
-          }]
+          // associatedLegalArea: [{
+          //   areaName: LawAreaEnum.FAMILY,
+          //   areaDescription: '',
+          //   associatedLegalIssues: []
+          // }]
         },
       ]
     }]

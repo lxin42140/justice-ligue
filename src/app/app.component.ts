@@ -1,3 +1,5 @@
+import { AccountService } from './services/account.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +11,21 @@ export class AppComponent {
   title = 'justice-ligue';
   events: string[] = [];
   opened: boolean = false;
+
+  constructor(
+    private router: Router,
+    public accountService: AccountService
+  ) { }
+
+  redirecTToHomePage() {
+    this.router.navigate(["/home"]);
+  }
+
+  switchAccount() {
+    this.accountService.switchUser();
+    this.router.navigate(["/home"]);
+  }
+
 }
 
 // case created when selecting options. user choose timeslot, fill in template -> use the values to update case
@@ -22,8 +39,7 @@ export class AppComponent {
 // clients can upate documents
 // lawyers can edit caseFields
 
-//case details page should show the client and lawyer remarks too
-
+// case details page should show the client and lawyer remarks too
 
 // lawyers can view calendar -> see which slots are being booked -> click in to view case details (should be same component as client), can edit all details
 // lawyers can view all their cases
