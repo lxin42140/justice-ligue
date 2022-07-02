@@ -15,7 +15,7 @@ export class Case {
     caseStatus: string
     caseFields: Map<string, string>
     client: Client
-    lawyer: Lawyer
+    lawyer: Lawyer | undefined
     meetings: Meeting[]
     associatedLawAreas: LawArea[]
     associatedLegalIssues: LegalIssue[]

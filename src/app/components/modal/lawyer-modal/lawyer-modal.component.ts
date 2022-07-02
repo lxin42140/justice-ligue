@@ -6,6 +6,8 @@ import { Document } from 'src/app/models/Document';
 import moment from 'moment';
 import { Case } from 'src/app/models/Case';
 import { User } from 'src/app/models/User';
+import { ClientScheduleService } from 'src/app/services/client-schedule.service';
+import { Router } from '@angular/router';
 
 export interface LawyerDialogData {
   viewProfile: boolean; //viewing profile or booking slots
@@ -13,7 +15,7 @@ export interface LawyerDialogData {
 }
 
 //just a temp object. in the future likely to shift this to its own service, with attributes such as occupied or not, lawyer's availability etc.
-interface Timeslot {
+export interface Timeslot {
   day: {
     date: number; //date
     dayOfWeek: number; //Sun -> 0; Mon -> 1 etc
@@ -21,6 +23,8 @@ interface Timeslot {
   time: {
     startTime: string; //in the format H:mm, 24 hour format
     endTime: string; //in the format H:mm, 24 hour format
+    startTimeDate: Date,
+    endTimeDate: Date,
     duration: string; //in the format xh ymin, where x and y are numbers > 0. for now, default is 30min.
   }
 }
@@ -45,6 +49,8 @@ export class LawyerModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<LawyerModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LawyerDialogData,
+    private clientScheduleService: ClientScheduleService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -120,6 +126,14 @@ export class LawyerModalComponent implements OnInit {
   submit() {
     console.log('submit')
     //validate, submit.
+    const allFilled = Array.from(this.requiredFields.values()).every(x => x && x.length > 0);
+
+    if (allFilled) {
+      //update case
+      this.clientScheduleService.createCaseWithLawyer(this.data.lawyer, this.selectedTimeslot!, this.requiredFields, this.uploadedDocuments);
+      this.dialogRef.close();
+      this.router.navigate(['/client/view-consultations']);
+    }
   }
 
   private initTimeslots() {
@@ -144,13 +158,18 @@ export class LawyerModalComponent implements OnInit {
         DAYS_IN_ADVANCE++;
         continue;
       } else {
+        // moment('23/5/1998 12:04', 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY HH:mm')
         this.timeslots.set(date.date(), timeslotsPerDay.map(x => {
           return {
             day: {
               date: date.date(),
               dayOfWeek: date.day()
             },
-            time: x
+            time: {
+              ...x,
+              startTimeDate: new Date(moment(`${date.format('DD/MM/YYYY')} ${x.startTime}`, 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY HH:mm')),
+              endTimeDate: new Date(moment(`${date.format('DD/MM/YYYY')} ${x.endTime}`, 'DD/MM/YYYY HH:mm').format('DD/MM/YYYY HH:mm')),
+            }
           }
         }));
       }

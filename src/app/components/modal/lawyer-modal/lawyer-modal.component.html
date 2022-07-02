@@ -9,11 +9,9 @@
       <textarea matInput [ngModel]="field.value" (ngModelChange)="updateFields(field.key, $event)"></textarea>
     </mat-form-field>
 
-    <div class="row" style="align-items: center;" *ngFor="let document of requiredDocuments; let i = index;" appearance="fill">
+    <div style="align-items: center;" *ngFor="let document of requiredDocuments; let i = index;" appearance="fill">
+      <mat-label style="margin-right: 5px;">{{document.documentName}}</mat-label>
       <input class="form-control" type="file" (change)="onChange(i, $event)">
-      <!-- <button mat-raised-button color="primary" (click)="onUpload()">
-        Upload
-      </button> -->
     </div>
   </div>
 

@@ -4,6 +4,7 @@ import { LawSubjectService } from '../../services/law-subject.service';
 
 import { LawArea } from 'src/app/models/LawArea';
 import { LegalIssue } from 'src/app/models/LegalIssue';
+import { LegalService } from 'src/app/models/LegalService';
 
 @Component({
   selector: 'app-matching-lawyer',
@@ -18,7 +19,7 @@ export class MatchingLawyerComponent implements OnInit {
 
   selectedLawArea: LawArea | undefined;
   selectedLegalIssue: LegalIssue | undefined;
-  selectedLegalServiceCategory: string | undefined; //TODO:
+  selectedLegalServiceCategory: LegalService | undefined; //TODO:
 
   constructor(
     private router: Router,
@@ -36,7 +37,7 @@ export class MatchingLawyerComponent implements OnInit {
     this.selectedLegalIssue = legalIssue
   }
 
-  setSelectedLegalServiceCategory(category: string) {
+  setSelectedLegalServiceCategory(category: LegalService) {
     this.selectedLegalServiceCategory = category;
   }
 
@@ -62,7 +63,7 @@ export class MatchingLawyerComponent implements OnInit {
   submit() {
     //TODO: create the case here, store in service
     if (this.selectedLegalServiceCategory) {
-      this.router.navigate(['/client/all-lawyers', this.selectedLawArea?.areaName, this.selectedLegalIssue?.issueName, this.selectedLegalServiceCategory]);
+      this.router.navigate(['/client/all-lawyers', this.selectedLawArea?.areaName, this.selectedLegalIssue?.issueName, this.selectedLegalServiceCategory?.serviceName]);
     }
   }
 }

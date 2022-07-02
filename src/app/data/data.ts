@@ -37,11 +37,13 @@ export const DummyLawyer: Lawyer = {
 }
 
 const requiredFields = new Map<string, string>();
-requiredFields.set('What is your age?', '');
-requiredFields.set('What is your budget?', '');
+requiredFields.set('Enter a title for the case.', '');
+requiredFields.set('Enter a description for the case.', '');
+requiredFields.set('How long has the dispute lasted?', '');
+requiredFields.set('Enter the issues that you have encountered.', '');
 
 const requiredDocuments = <Document[]>[{
-    documentName: 'Marriage Certificate',
+    documentName: 'Contract (if available)',
     documentDescription: '',
     documentURL: '',
     isSensitive: false,
