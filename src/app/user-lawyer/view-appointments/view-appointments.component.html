@@ -35,12 +35,11 @@
 
         <div *ngFor="let timeslot of dayTimeslots.value">
           <div
-            [ngClass]="{ card: true, active: checkTimeslotIsActive(timeslot) }"
-            (click)="selectTimeslot(dayTimeslots.key, timeslot.time.startTime)"
+            [ngClass]="{ card: true, active: checkTimeSlotIsBoooked(timeslot) }"
           >
             <p
               [ngClass]="{
-                'card-content-active': checkTimeslotIsActive(timeslot)
+                'card-content-active': checkTimeSlotIsBoooked(timeslot)
               }"
             >
               {{ timeslot.time.startTime }} - {{ timeslot.time.endTime }}
@@ -48,20 +47,20 @@
             <div
               [ngClass]="{
                 row: true,
-                'card-content-active': checkTimeslotIsActive(timeslot)
+                'card-content-active': checkTimeSlotIsBoooked(timeslot)
               }"
               style="align-items: center"
             >
               <mat-icon
                 [ngClass]="{
-                  'card-content-active': checkTimeslotIsActive(timeslot)
+                  'card-content-active': checkTimeSlotIsBoooked(timeslot)
                 }"
                 style="margin-right: 5px"
                 >access_time</mat-icon
               >
               <span
                 [ngClass]="{
-                  'card-content-active': checkTimeslotIsActive(timeslot)
+                  'card-content-active': checkTimeSlotIsBoooked(timeslot)
                 }"
                 class="card-content"
                 >{{ timeslot.time.duration }}</span

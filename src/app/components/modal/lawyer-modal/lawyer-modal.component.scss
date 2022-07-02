@@ -35,13 +35,9 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 20px;
-  // position: absolute;
-  // bottom: 20px;
-  // right: 20px;
 }
 
 .all-timeslots {
-  // flex-shrink: 0;
   flex-wrap: nowrap;
   overflow-x: scroll;
   overflow-y: scroll;
@@ -82,4 +78,12 @@
 
 .card-content-active {
   color: white;
+}
+
+button {
+  margin: 0 10px 0 10px;
+}
+
+mat-form-field {
+  width: 100%;
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Lawyer } from 'src/app/models/Lawyer';
+import { Document } from 'src/app/models/Document';
 
 import moment from 'moment';
+import { Case } from 'src/app/models/Case';
+import { User } from 'src/app/models/User';
 
 export interface LawyerDialogData {
   viewProfile: boolean; //viewing profile or booking slots
@@ -30,8 +33,14 @@ interface Timeslot {
 export class LawyerModalComponent implements OnInit {
 
   viewProfile: boolean = true;
+
   timeslots: Map<number, Timeslot[]> = new Map<number, Timeslot[]>();
   selectedTimeslot: Timeslot | undefined;
+
+  showEditFormPage: boolean = false;
+  requiredFields: Map<string, string> = new Map();
+  requiredDocuments: Document[] = [];
+  uploadedDocuments: File[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<LawyerModalComponent>,
@@ -40,7 +49,8 @@ export class LawyerModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.viewProfile = this.data.viewProfile
-
+    this.requiredFields = this.data.lawyer.caseTemplates[0].requiredFields; //for now, take it as there is only one case template
+    this.requiredDocuments = this.data.lawyer.caseTemplates[0].requiredDocumentTemplates; //for now, take it as there is only one case template
     this.initTimeslots();
   }
 
@@ -58,6 +68,58 @@ export class LawyerModalComponent implements OnInit {
 
   updateCase() {
     //TODO: update the case with the timeslot
+    this.showEditFormPage = true;
+  }
+
+  //this function is just to prevent the textarea from losing focus on every character input.
+  //read here: https://stackoverflow.com/questions/42322968/angular2-dynamic-input-field-lose-focus-when-input-changes
+  trackByFn(index: any, item: any) {
+    return index;
+  }
+
+  updateFields(field: string, event: string) {
+    this.requiredFields.set(field, event);
+  }
+
+  closeModal() {
+    this.dialogRef.close();
+  }
+
+  onChange(index: number, event: any) {
+    if (event.target.files[0]) {
+      // this.uploadedDocuments[index] = <Document>{
+      //   documentName: event.target.files[0].name,
+      //   associatedCase: {} as unknown as Case,
+      //   documentDescription: '',
+      //   documentURL: '',
+      //   isSensitive: false,
+      //   submittedUser: {} as unknown as User,
+      // }
+      this.uploadedDocuments[index] = event.target.files[0];
+    }
+  }
+
+  //not used for now. for actual file upload
+  onUpload() {
+    // this.loading = !this.loading;
+    // console.log(this.file);
+    // this.fileUploadService.upload(this.file).subscribe(
+    //   (event: any) => {
+    //     if (typeof (event) === 'object') {
+
+    //       // Short link via api response
+    //       this.shortLink = event.link;
+
+    //       this.loading = false; // Flag variable 
+    //     }
+    //   }
+    // );
+    console.log('onUpload')
+  }
+
+  submit() {
+    console.log('submit')
+    //validate, submit.
   }
 
   private initTimeslots() {
@@ -94,8 +156,4 @@ export class LawyerModalComponent implements OnInit {
       }
     }
   }
-
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
 }

@@ -3,10 +3,10 @@
 
   <mat-card>
     <div class="lawyer-cards">
+      <app-lawyer-card *ngFor="let lawyer of filteredLawyers" [lawyer]="lawyer" class="lawyer-card"></app-lawyer-card>
+      <!-- <app-lawyer-card class="lawyer-card"></app-lawyer-card>
       <app-lawyer-card class="lawyer-card"></app-lawyer-card>
-      <app-lawyer-card class="lawyer-card"></app-lawyer-card>
-      <app-lawyer-card class="lawyer-card"></app-lawyer-card>
-      <app-lawyer-card class="lawyer-card"></app-lawyer-card>
+      <app-lawyer-card class="lawyer-card"></app-lawyer-card> -->
     </div>
   </mat-card>
 </div>

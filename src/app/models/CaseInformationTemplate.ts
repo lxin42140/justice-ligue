@@ -2,6 +2,7 @@ import { Lawyer } from './Lawyer';
 import { LegalServiceBudget } from './LegalServiceBudget';
 import { LegalIssue } from './LegalIssue';
 import { LawArea } from './LawArea';
+import { Document } from './Document';
 
 export class CaseInformationTemplate {
     requiredFields: Map<string, string>;

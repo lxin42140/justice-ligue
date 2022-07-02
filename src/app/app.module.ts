@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 // import { HomeComponent } from './user-client/home/home.component';
 import { HomeComponent } from './shared/home/home.component';
@@ -46,6 +48,7 @@ import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cas
     ViewAllCasesComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -57,7 +60,8 @@ import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cas
     MatDividerModule,
     MatCheckboxModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

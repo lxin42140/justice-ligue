@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Lawyer } from 'src/app/models/Lawyer';
 import { LawyersService } from 'src/app/services/lawyers.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class AllLawyersComponent implements OnInit {
   lawMatterSubjectExample: string = '';
   lawServiceCategory: string = '';
 
+  filteredLawyers: Lawyer[] = [];
+
   constructor(
     private aRoute: ActivatedRoute,
     public lawyersService: LawyersService,
@@ -23,5 +26,8 @@ export class AllLawyersComponent implements OnInit {
     this.lawMatterSubjectExample = this.aRoute.snapshot.paramMap.get('example') ?? '';
     this.lawServiceCategory = this.aRoute.snapshot.paramMap.get('service') ?? '';
     //prob need to do some validation here. or can be done later when retrieving lawyers.
+
+    //for now just all lawyers
+    this.filteredLawyers = this.lawyersService.allLawyers;
   }
 }
