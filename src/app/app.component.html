@@ -1,9 +1,38 @@
 <mat-toolbar>
-  <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon">
+  <button
+    mat-icon-button
+    class="icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
   </button>
-  <span>Justice Ligue</span>
-  <span class="welcome">Hi Li Xin!</span>
+  <span (click)="redirecTToHomePage()" class="logo">Justice Ligue</span>
+  <div class="welcome" (click)="switchAccount()">
+    <div
+      *ngIf="accountService.isClient"
+      style="display: flex; flex-direction: column; align-items: flex-end"
+    >
+      <span style="font-size: small">Client Account</span>
+      <span *ngIf="accountService.isClient"
+        >Welcome
+        {{
+          accountService.client.firstName + " " + accountService.client.lastName
+        }}</span
+      >
+    </div>
+    <div
+      *ngIf="!accountService.isClient"
+      style="display: flex; flex-direction: column; align-items: flex-end"
+    >
+      <span style="font-size: small">Lawyer Account</span>
+      <span
+        >Welcome
+        {{
+          accountService.lawyer.firstName + " " + accountService.lawyer.lastName
+        }}</span
+      >
+    </div>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
