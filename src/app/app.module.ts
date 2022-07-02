@@ -28,6 +28,7 @@ import { LawyerCardComponent } from './components/cards/lawyer-card/lawyer-card.
 import { LawyerModalComponent } from './components/modal/lawyer-modal/lawyer-modal.component';
 import { ViewAppointmentsComponent } from './user-lawyer/view-appointments/view-appointments.component';
 import { CaseDetailComponent } from './shared/case-detail/case-detail.component';
+import { ViewAllCasesComponent } from './user-lawyer/view-all-cases/view-all-cases.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CaseDetailComponent } from './shared/case-detail/case-detail.component'
     LawyerCardComponent,
     LawyerModalComponent,
     ViewAppointmentsComponent,
-    CaseDetailComponent
+    CaseDetailComponent,
+    ViewAllCasesComponent
   ],
   imports: [
     BrowserModule,
