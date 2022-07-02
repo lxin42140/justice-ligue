@@ -35,6 +35,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatListModule} from '@angular/material/list';
 import { CaseTemplateComponent } from './user-lawyer/case-template/case-template.component';
 import { DataTablesModule } from 'angular-datatables';
+import { CaseDetailModalComponent } from './shared/case-detail-modal/case-detail-modal.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { DataTablesModule } from 'angular-datatables';
     ViewAppointmentsComponent,
     CaseDetailComponent,
     CaseTemplateComponent,
-    ViewAllCasesComponent
+    ViewAllCasesComponent,
+    CaseDetailModalComponent
   ],
   imports: [
     FormsModule,

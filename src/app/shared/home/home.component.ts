@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     } else {
       switch (this.selectedOption) {
         case (0):
-          this.router.navigate([''])
+          this.router.navigate(['lawyer/view-all-cases'])
           break;
         case (1):
           this.router.navigate(['lawyer/view-appointments']);
