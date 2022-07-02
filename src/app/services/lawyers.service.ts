@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Case } from '../models/Case';
 import { LawAreaEnum } from '../models/enums/law-area.enum';
 import { LegalIssueEnum } from '../models/enums/legal-issue.enum';
 import { Lawyer } from '../models/Lawyer';
 import { LegalServiceBudget } from '../models/LegalServiceBudget';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +49,17 @@ export class LawyersService {
 
     const requiredFields = new Map<string, string>();
     requiredFields.set('What is your age?', '');
+    requiredFields.set('What is your budget?', '');
+
+    const requiredDocuments = [{
+      documentName: 'Marriage Certificate',
+      documentDescription: '',
+      documentURL: '',
+      isSensitive: false,
+      submittedUser: {} as unknown as User,
+      associatedCase: {} as unknown as Case,
+    }]
+
     const caseInformationTemplates = [{
       requiredFields: requiredFields,
       lawAreas: [{
@@ -71,7 +84,7 @@ export class LawyersService {
           associatedLegalIssues: []
         }]
       }],
-      requiredDocumentTemplates: [],
+      requiredDocumentTemplates: requiredDocuments,
       createdByLawyer: this.allLawyers[0],
       estimatedBudget: undefined as unknown as LegalServiceBudget,
     }];

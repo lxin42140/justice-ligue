@@ -8,6 +8,13 @@
       <mat-label>{{field.key}}</mat-label>
       <textarea matInput [ngModel]="field.value" (ngModelChange)="updateFields(field.key, $event)"></textarea>
     </mat-form-field>
+
+    <div class="row" style="align-items: center;" *ngFor="let document of requiredDocuments; let i = index;" appearance="fill">
+      <input class="form-control" type="file" (change)="onChange(i, $event)">
+      <!-- <button mat-raised-button color="primary" (click)="onUpload()">
+        Upload
+      </button> -->
+    </div>
   </div>
 
   <div *ngIf="!showEditFormPage && viewProfile" class="profile-container">
@@ -65,9 +72,8 @@
   </div>
 
   <div *ngIf="showEditFormPage" class="row button-container">
-    <!-- <button *ngIf="viewProfile" mat-raised-button color="primary" (click)="viewTimeslots()">Book a slot</button>
-    <button *ngIf="!viewProfile" mat-raised-button color="primary" [disabled]="selectedTimeslot === undefined"
-      (click)="updateCase()">Book slot</button> -->
+    <button mat-raised-button (click)="closeModal()">Back</button>
+    <button mat-raised-button color="primary" (click)="submit()">Submit</button>
   </div>
 
   <div *ngIf="!showEditFormPage && !viewProfile" class="row button-container">
